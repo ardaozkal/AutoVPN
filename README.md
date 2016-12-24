@@ -10,3 +10,7 @@ Create a mailgun account, get your api key.
 Edit the `easyvpn.sh`, with your domain, message content and api key. Copy that to `~/openvpn-ca` folder of your server.
 
 To generate and send an openvpn config, run `./easyvpn.sh certname clientsmail@example.tld` while on `~/openvpn-ca`.
+
+## Example Result
+
+![Example Result](https://i.imgur.com/U57VY7K.png)
