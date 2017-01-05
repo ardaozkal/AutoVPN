@@ -20,7 +20,7 @@ then
     . vars
     ./pkitool $client
     ../client-configs/make_config.sh $client
-    curl -s --user $mailgunapikey https://api.mailgun.net/v3/$mailgundomainname/messages -F from=$mailgunfrom -F to=$mail -F subject=$mailgunsubject-F text=$mailguncontents -F attachment=@../client-configs/files/$client.ovpn
+    curl -s --user $mailgunapikey https://api.mailgun.net/v3/$mailgundomainname/messages -F from=$mailgunfrom -F to=$mail -F subject=$mailgunsubject -F text=$mailguncontents -F attachment=@../client-configs/files/$client.ovpn
     echo "" #mailgun takes a line ugh
     echo "Completed and sent to $mail."
 else
