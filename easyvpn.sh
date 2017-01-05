@@ -14,15 +14,19 @@ mailgun_replyto='vpnsupport@example.com' #Put your personal mail or support mail
 #don't touch anything below if you don't know what you are doing
 if [ -f $mailgun_htmlfilename ];
 then
+    sed -i -e "s/VPNNAME/$vpnname/g" $mailgun_htmlfilename
+    sed -i -e "s/REPLYTO/$mailgun_replyto/g" $mailgun_htmlfilename
     mailgun_htmlcontents=`cat "$mailgun_htmlfilename"`
     . vars
     ./pkitool $client
     ../client-configs/make_config.sh $client
     curl -s --user $mailgunapikey https://api.mailgun.net/v3/$mailgundomainname/messages -F from=$mailgunfrom -F to=$mail -F subject=$mailgunsubject-F text=$mailguncontents -F attachment=@../client-configs/files/$client.ovpn
+    echo "" #mailgun takes a line ugh
+    echo "Completed and sent to $mail."
 else
     echo "HTML file doesn't exist. Downloading and making one now."
-    wget https://raw.githubusercontent.com/ardaozkal/AutoVPN/master/mailcontents.html
-    sed -i -e "s/VPNNAME/$vpnname" mailcontents.html
-    sed -i -e "s/REPLYTO/$mailgun_replyto" mailcontents.html
+    wget "https://raw.githubusercontent.com/ardaozkal/AutoVPN/master/mailcontents.html" --output-document=$mailgun_htmlfilename
+    sed -i -e "s/VPNNAME/$vpnname/g" $mailgun_htmlfilename
+    sed -i -e "s/REPLYTO/$mailgun_replyto/g" $mailgun_htmlfilename
     echo "Should be done. Re-run script please."
 fi
