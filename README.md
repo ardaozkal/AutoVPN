@@ -7,10 +7,10 @@ Automatic VPN account creation and mailing system
 
 Create a mailgun account, get your api key.
 
-Edit the `easyvpn.sh`, with your domain, message content and api key. Copy that to `~/openvpn-ca` folder of your server.
+Download the `easyvpn.sh` file to the server and edit the variables on top of it.
 
-To generate and send an openvpn config, run `./easyvpn.sh certname clientsmail@example.tld` while on `~/openvpn-ca`.
+To generate and send an openvpn config, run `./easyvpn.sh certname clientsmail@example.tld`.
 
 ## Example Result
 
-![Example Result](https://i.imgur.com/U57VY7K.png)
+![Example Result](https://i.imgur.com/1oa4yR6.png)
