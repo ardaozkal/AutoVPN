@@ -1,5 +1,7 @@
 #!/bin/bash
 
+cd ~/openvpn-ca/
+
 client=$1
 mail=$2
 vpnname='SomeVPN'
